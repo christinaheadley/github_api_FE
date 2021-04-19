@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>github</title>
+  </head>
+  <body>
+    <h1>github API</h1>
+    <button id="btnRepos">Repos</button>
+    <div id="divResult"></div>
+
+    <script>
+
+      const axios = require("axios");
+      async function getRepos() {
+        const headers = {
+          Accept: application / vnd.github.v3 + json,
+        };
+        const url = "https://api.github.com/repos/vuejs/vue";
+        const response = await fetch(url, {
+          method: "GET",
+          headers: headers,
+        });
+      const btnRepos = document.getElementById("btnRepos");
+      const divResult = document.getElementById("divResult");
+      btnRepos.addEventListener("click", getRepos);
+      async function getRepos() {
+        // const username = "christinaheadley"
+        // const password = "mypassword"
+        // const headers = {
+        //   "Authorization" : `Basic ${btoa(`${username}:${password}`)}`
+        // },
+        const headers = {
+          Authorization: `Token uewoifdsjclkasdjf394`,
+        }; //token access to own repos after creating token
+        // const url = "https://api.github.com/search/repositories?q=stars:>100000";
+        // const response = await fetch(url);
+        const url = "https://api.github.com/search/issues?q=repo:christinaheadley/hello-world type:issue";
+        const response = await fetch(url, {
+          method: "GET",
+          headers: headers,
+        });
+        const result = await response.json();
+
+        result.items.forEach((i) => {
+          divResult.appendChild(document.createTextNode(i.full_name));
+        });
+      }
+    </script>
+  </body>
+</html>
+
+<!--  build a dashboard that shows many Stars, Watchers, and Forks
+  
+https://api.github.com/search/repositories?q=user=vuejs/vue 
+
+AND "full_name": "vuejs/vue"
+{
+"total_count": 104,
+"incomplete_results": false,
+"items": [
+{
+"id": 11730342,
+"node_id": "MDEwOlJlcG9zaXRvcnkxMTczMDM0Mg==",
+"name": "vue",
+"full_name": "vuejs/vue",
+"private": false,
+"owner": {
+"login": "vuejs",
+
+
+https://api.github.com/repos/vuejs/vue/stargazers ==> count of 30
+
+https://github.com/vuejs/vue/stargazers
+-->

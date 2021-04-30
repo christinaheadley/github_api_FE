@@ -4,97 +4,27 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>github</title>
+    <title>Chicago Graffiti</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-    <!-- <link rel="stylesheet" href="/style.css" /> -->
-
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js">
-      import axios from "axios";
-    </script>
+    <figure class="highcharts-figure">
+      <div id="container"></div>
+      <!-- <p class="highcharts-description">
+        A basic column chart compares rainfall values between four cities. Tokyo has the overall highest amount of
+        rainfall, followed by New York. The chart is making use of the axis crosshair feature, to highlight months as
+        they are hovered over.
+      </p> -->
+    </figure>
+    <script src="index.js" defer></script>
   </head>
   <body>
-    <div id="app">
-      <h1>github API</h1>
-      <div>
-        Angular Stargazers: {{ angulars["stargazers_count"] }} Angular Watchers: {{ angulars["subscribers_count"] }}
-        Angular Forks: {{ angulars["forks_count"] }}
-      </div>
-      <div>
-        Ember Stargazers: {{ embers["stargazers_count"] }} Ember Watchers: {{ embers["subscribers_count"] }} Ember
-        Forks: {{ embers["forks_count"] }}
-      </div>
-      <div>
-        React Stargazers: {{ reacts["stargazers_count"] }} React Watchers: {{ reacts["subscribers_count"] }} React
-        Forks: {{ reacts["forks_count"] }}
-      </div>
-      <div>
-        Svelte Stargazers: {{ sveltes["stargazers_count"] }} Svelte Watchers: {{ sveltes["subscribers_count"] }} Svelte
-        Forks: {{ sveltes["forks_count"] }}
-      </div>
-      <div>
-        Vue Stargazers: {{ vues["stargazers_count"] }} Vue Watchers: {{ vues["subscribers_count"] }} Vue Forks: {{
-        vues["forks_count"] }}
-      </div>
-    </div>
-
-    <script>
-      var app = new Vue({
-        el: "#app",
-        data: {
-          angulars: "",
-          embers: "",
-          reacts: "",
-          sveltes: "",
-          vues: "",
-        },
-        created: function () {
-          this.angularInfo();
-          this.emberInfo();
-          this.reactInfo();
-          this.svelteInfo();
-          this.vueInfo();
-        },
-        methods: {
-          angularInfo: function () {
-            axios.get("https://api.github.com/angular/angular").then((response) => {
-              this.angulars = response.data;
-              console.log(this.angulars);
-            });
-          },
-          emberInfo: function () {
-            axios.get("https://api.github.com/repos/emberjs/ember.js/").then((response) => {
-              this.embers = response.data;
-              console.log(this.embers);
-            });
-          },
-          reactInfo: function () {
-            axios.get("https://api.github.com/repos/facebook/react").then((response) => {
-              this.reacts = response.data;
-              console.log(this.reacts);
-            });
-          },
-          svelteInfo: function () {
-            axios.get("https://api.github.com/repos/sveltejs/svelte").then((response) => {
-              this.sveltes = response.data;
-              console.log(this.sveltes);
-            });
-          },
-          vueInfo: function () {
-            axios.get("https://api.github.com/repos/vuejs/vue").then((response) => {
-              this.vues = response.data;
-              console.log(this.vues);
-            });
-          },
-          //       data =
-          // {
-          //   stars: vue_response["stargazers_count"],
-          //   watchers: vue_response["subscribers_count"],
-          //   forks: vue_response["forks_count"]
-          // }
-          // render json: data
-        },
-      });
-    </script>
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <script></script>
   </body>
 </html>

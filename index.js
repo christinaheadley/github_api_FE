@@ -2,7 +2,7 @@
 
 const fetchGithubInfo = async (url) => {
   console.log(`Fetching ${url}`);
-  const githubInfo = await axios(url); // API call to get user info from Github.
+  const githubInfo = await axios(url);
   return [
     // Stars:
     githubInfo.data.stargazers_count,
@@ -51,7 +51,7 @@ const dataPoints = fetchRepoInfo([
       },
     },
     tooltip: {
-      headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+      headerFormat: '<span style="font-size:12px">{point.key}</span><table>',
       pointFormat:
         '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
         '<td style="padding:0"><b>{point.y:.0f}</b></td></tr>',
@@ -61,14 +61,14 @@ const dataPoints = fetchRepoInfo([
     },
     plotOptions: {
       column: {
-        pointPadding: 0.2,
+        pointPadding: 0.3,
         borderWidth: 0,
       },
     },
     series: [
       {
-        name: names[0],
-        data: dataPoints[0],
+        name: names[0], //string from array
+        data: dataPoints[0], //array of numbers from object(hash)
       },
       {
         name: names[1],
